@@ -1,0 +1,1 @@
+export const SET_DATA_INPUT = 'set_data_input'

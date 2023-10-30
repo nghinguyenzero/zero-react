@@ -1,11 +1,12 @@
 // import logo from './logo.svg';
 // import './App.css';
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Switch, Redirect } from "react-router-dom";
 import AlbumFeature from "./features/Album/pages";
 import TodoFeature from "./features/Todo/pages";
 import ListPage from "./features/Todo/pages/ListPage";
 import DetailPage from "./features/Todo/pages/DetailPage";
 import NotFound from "./components/Loading/NotFound";
+// import { useStore } from "./store";
 
 function App() {
   return (
@@ -21,23 +22,15 @@ function App() {
           Albums
         </NavLink>
       </p>
-      <Routes>
-
-        {/* <Route path="/todos" element={<TodoFeature />} /> */}
-          {/* <Route path='/todos' element={<ListPage/>}/> */}
-          {/* <Route path='todos/:todoId' element={<DetailPage />}/> */}
-
-        {/* </Route> */}
-
-        <Route path="/albums" element={<AlbumFeature />} />
-        <Route path="*" element={<TodoFeature />}/>
+      <Switch>
+        <Redirect from="/home" to="/" exact/>
+        <Route path="/" component={TodoFeature}  exact/>
+        <Route path="/todos" component={TodoFeature} />
+        <Route path="/albums" component={AlbumFeature} />
+        <Route path="/theme" component={AlbumFeature} />
         <Route element={<NotFound />}/>
-
-
-      </Routes>
+      </Switch>
       <h2>Footer</h2>
-      {/* <TodoFeature></TodoFeature> */}
-      {/* <AlbumFeature></AlbumFeature> */}
     </div>
   );
 }
