@@ -1,7 +1,7 @@
-import { SET_DATA_INPUT } from "./constants";
+import { SET_DATA_INPUT, ADD_DATA } from "./constants";
 const initState = {
-    todos: [],
-    todoInput : ''
+    datas: [],
+    dataInput : ''
 }
 
  function reducer (state, action) {
@@ -9,11 +9,15 @@ const initState = {
     switch (action.type) {
         case SET_DATA_INPUT: return {
             ...state,
-            todoInput: action.payload
-        }
-            
-            break;
-    
+            dataInput: action.payload
+        }            
+        break;
+        case ADD_DATA: return {
+            ...state,
+            // dataInput: action.payload
+            datas : [...state.datas, action.payload]
+        }          
+            break; 
         default: throw new Error("invalid action")
             break;
     }
